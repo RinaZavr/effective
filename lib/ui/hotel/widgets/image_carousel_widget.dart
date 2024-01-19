@@ -1,4 +1,4 @@
-import 'package:effective/consts/colors_consts.dart';
+import 'package:effective/consts/hotelConsts/colors_consts.dart';
 import 'package:flutter/material.dart';
 
 class ImageCarouselWidget extends StatefulWidget {
@@ -47,7 +47,7 @@ class _ImageCarouselWidgetState extends State<ImageCarouselWidget> {
                 width: 75,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
-                  color: AppColors.imageCarouselBgColor,
+                  color: HotelColors.imageCarouselBgColor,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -61,8 +61,8 @@ class _ImageCarouselWidgetState extends State<ImageCarouselWidget> {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: selectedImage == index
-                                ? AppColors.imageCarouselSelectedItemColor
-                                : AppColors.imageCarouselUnselectedItemColor,
+                                ? HotelColors.imageCarouselSelectedItemColor
+                                : HotelColors.imageCarouselUnselectedItemColor,
                           ),
                         ),
                     ],

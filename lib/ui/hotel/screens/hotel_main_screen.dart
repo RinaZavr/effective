@@ -1,6 +1,11 @@
-import 'package:effective/consts/textstyle_consts.dart';
+import 'package:effective/consts/hotelConsts/textstyle_consts.dart';
+import 'package:effective/ui/hotel/widgets/about_widget.dart';
+import 'package:effective/ui/hotel/widgets/button_widget.dart';
+import 'package:effective/ui/hotel/widgets/description_widget.dart';
 import 'package:effective/ui/hotel/widgets/image_carousel_widget.dart';
+import 'package:effective/ui/hotel/widgets/price_widget.dart';
 import 'package:effective/ui/hotel/widgets/rating_widget.dart';
+import 'package:effective/ui/hotel/widgets/title_widget.dart';
 import 'package:flutter/material.dart';
 
 class HotelMainScreen extends StatefulWidget {
@@ -26,7 +31,7 @@ class _HotelMainScreenState extends State<HotelMainScreen> {
           centerTitle: true,
           title: const Text(
             'Отель',
-            style: AppTextStyles.appBarTextStyle,
+            style: HotelTextStyles.appBarTextStyle,
           ),
         ),
         body: CustomScrollView(
@@ -35,7 +40,35 @@ class _HotelMainScreenState extends State<HotelMainScreen> {
               child: ImageCarouselWidget(size: size, images: images),
             ),
             const SliverToBoxAdapter(
-              child: RatingWidget(rating: 5,),
+              child: RatingWidget(rating: 5, ratingName: 'Превосходно'),
+            ),
+            const SliverToBoxAdapter(
+              child: TitleWidget(title: 'Steigenberger Makadi'),
+            ),
+            const SliverToBoxAdapter(
+              child: DescriptionWidget(
+                  title: 'Madinat Makadi, Safaga Road, Makadi Bay, Египет'),
+            ),
+            const SliverToBoxAdapter(
+              child:
+                  PriceWidget(price: 134268, priceForIt: 'За тур с перелётом'),
+            ),
+            const SliverToBoxAdapter(
+              child: AboutWidget(
+                aboutHotel: {
+                  "description":
+                      "Отель VIP-класса с собственными гольф полями. Высокий уровнь сервиса. Рекомендуем для респектабельного отдыха. Отель принимает гостей от 18 лет!",
+                  "peculiarities": [
+                    "Бесплатный Wifi на всей территории отеля",
+                    "1 км до пляжа",
+                    "Бесплатный фитнес-клуб",
+                    "20 км до аэропорта"
+                  ]
+                },
+              ),
+            ),
+            const SliverToBoxAdapter(
+              child: ButtonWidget(),
             ),
           ],
         ));

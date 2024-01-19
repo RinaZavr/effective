@@ -1,28 +1,32 @@
-import 'package:effective/consts/colors_consts.dart';
-import 'package:effective/consts/textstyle_consts.dart';
+import 'package:effective/consts/hotelConsts/colors_consts.dart';
+import 'package:effective/consts/hotelConsts/textstyle_consts.dart';
 import 'package:flutter/material.dart';
 
 class RatingWidget extends StatelessWidget {
   final int rating;
-  const RatingWidget({super.key, required this.rating});
+  final String ratingName;
+  const RatingWidget({super.key, required this.rating, required this.ratingName});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(left: 16, right: 250),
+      width: 100,
       decoration: BoxDecoration(
-        color: AppColors.ratingBgColor,
+        color: HotelColors.ratingBgColor,
         borderRadius: BorderRadius.circular(5),
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const Icon(
             Icons.star,
-            color: AppColors.ratingContentColor,
+            color: HotelColors.ratingContentColor,
             size: 17,
           ),
           Text(
-            '$rating Превосходно',
-            style: AppTextStyles.ratingTextStyle,
+            '$rating $ratingName',
+            style: HotelTextStyles.ratingTextStyle,
           )
         ],
       ),
