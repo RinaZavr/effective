@@ -1,9 +1,9 @@
-import 'package:effective/consts/hotelConsts/textstyle_consts.dart';
+import 'package:hotel_app/consts/hotelConsts/textstyle_consts.dart';
 import 'package:flutter/material.dart';
 
-class TitleWidget extends StatelessWidget {
+class HotelTitleWidget extends StatelessWidget {
   final String title;
-  const TitleWidget({super.key, required this.title});
+  const HotelTitleWidget({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

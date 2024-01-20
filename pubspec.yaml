@@ -1,4 +1,4 @@
-name: effective
+name: hotel_app
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -33,6 +33,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   dio: ^5.4.0
   get_it: ^7.6.7
+  mask_text_input_formatter: ^2.8.0
+  email_validator: ^2.1.17
 
 dev_dependencies:
   flutter_test:

@@ -1,10 +1,10 @@
-import 'package:effective/consts/hotelConsts/textstyle_consts.dart';
+import 'package:hotel_app/consts/hotelConsts/textstyle_consts.dart';
 import 'package:flutter/material.dart';
 
-class AboutButtonTemplateWidget extends StatelessWidget {
+class HotelAboutButtonTemplateWidget extends StatelessWidget {
   final String image;
   final String title;
-  const AboutButtonTemplateWidget(
+  const HotelAboutButtonTemplateWidget(
       {super.key, required this.image, required this.title});
 
   @override

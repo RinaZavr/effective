@@ -1,4 +1,4 @@
-package com.example.effective
+package com.example.hotel_app
 
 import io.flutter.embedding.android.FlutterActivity
 

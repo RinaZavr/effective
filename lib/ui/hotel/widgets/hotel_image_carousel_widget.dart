@@ -1,17 +1,17 @@
-import 'package:effective/consts/hotelConsts/colors_consts.dart';
+import 'package:hotel_app/consts/hotelConsts/colors_consts.dart';
 import 'package:flutter/material.dart';
 
-class ImageCarouselWidget extends StatefulWidget {
+class HotelImageCarouselWidget extends StatefulWidget {
   final Size size;
   final List<String> images;
-  const ImageCarouselWidget(
+  const HotelImageCarouselWidget(
       {super.key, required this.size, required this.images});
 
   @override
-  State<ImageCarouselWidget> createState() => _ImageCarouselWidgetState();
+  State<HotelImageCarouselWidget> createState() => _HotelImageCarouselWidgetState();
 }
 
-class _ImageCarouselWidgetState extends State<ImageCarouselWidget> {
+class _HotelImageCarouselWidgetState extends State<HotelImageCarouselWidget> {
   int selectedImage = 0;
 
   @override

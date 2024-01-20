@@ -1,10 +1,10 @@
-import 'package:effective/consts/hotelConsts/textstyle_consts.dart';
+import 'package:hotel_app/consts/hotelConsts/textstyle_consts.dart';
 import 'package:flutter/material.dart';
 
-class PriceWidget extends StatelessWidget {
+class HotelPriceWidget extends StatelessWidget {
   final int price;
   final String priceForIt;
-  const PriceWidget({super.key, required this.price, required this.priceForIt});
+  const HotelPriceWidget({super.key, required this.price, required this.priceForIt});
 
   @override
   Widget build(BuildContext context) {

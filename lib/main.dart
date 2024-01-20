@@ -1,5 +1,5 @@
-import 'package:effective/domain/services/network_service.dart';
-import 'package:effective/ui/hotel/screens/hotel_main_screen.dart';
+import 'package:hotel_app/domain/services/network_service.dart';
+import 'package:hotel_app/ui/hotel/screens/hotel_main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 

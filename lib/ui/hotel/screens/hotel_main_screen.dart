@@ -1,11 +1,11 @@
-import 'package:effective/consts/hotelConsts/textstyle_consts.dart';
-import 'package:effective/ui/hotel/widgets/about_widget.dart';
-import 'package:effective/ui/hotel/widgets/button_widget.dart';
-import 'package:effective/ui/hotel/widgets/description_widget.dart';
-import 'package:effective/ui/hotel/widgets/image_carousel_widget.dart';
-import 'package:effective/ui/hotel/widgets/price_widget.dart';
-import 'package:effective/ui/hotel/widgets/rating_widget.dart';
-import 'package:effective/ui/hotel/widgets/title_widget.dart';
+import 'package:hotel_app/consts/hotelConsts/textstyle_consts.dart';
+import 'package:hotel_app/ui/hotel/widgets/hotel_about_widget.dart';
+import 'package:hotel_app/ui/hotel/widgets/hotel_button_widget.dart';
+import 'package:hotel_app/ui/hotel/widgets/hotel_address_widget.dart';
+import 'package:hotel_app/ui/hotel/widgets/hotel_image_carousel_widget.dart';
+import 'package:hotel_app/ui/hotel/widgets/hotel_price_widget.dart';
+import 'package:hotel_app/ui/hotel/widgets/hotel_rating_widget.dart';
+import 'package:hotel_app/ui/hotel/widgets/hotel_title_widget.dart';
 import 'package:flutter/material.dart';
 
 class HotelMainScreen extends StatefulWidget {
@@ -37,24 +37,24 @@ class _HotelMainScreenState extends State<HotelMainScreen> {
         body: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
-              child: ImageCarouselWidget(size: size, images: images),
+              child: HotelImageCarouselWidget(size: size, images: images),
             ),
             const SliverToBoxAdapter(
-              child: RatingWidget(rating: 5, ratingName: 'Превосходно'),
+              child: HotelRatingWidget(rating: 5, ratingName: 'Превосходно'),
             ),
             const SliverToBoxAdapter(
-              child: TitleWidget(title: 'Steigenberger Makadi'),
+              child: HotelTitleWidget(title: 'Steigenberger Makadi'),
             ),
             const SliverToBoxAdapter(
-              child: DescriptionWidget(
+              child: HotelAddressWidget(
                   title: 'Madinat Makadi, Safaga Road, Makadi Bay, Египет'),
             ),
             const SliverToBoxAdapter(
               child:
-                  PriceWidget(price: 134268, priceForIt: 'За тур с перелётом'),
+                  HotelPriceWidget(price: 134268, priceForIt: 'За тур с перелётом'),
             ),
             const SliverToBoxAdapter(
-              child: AboutWidget(
+              child: HotelAboutWidget(
                 aboutHotel: {
                   "description":
                       "Отель VIP-класса с собственными гольф полями. Высокий уровнь сервиса. Рекомендуем для респектабельного отдыха. Отель принимает гостей от 18 лет!",
@@ -68,7 +68,7 @@ class _HotelMainScreenState extends State<HotelMainScreen> {
               ),
             ),
             const SliverToBoxAdapter(
-              child: ButtonWidget(),
+              child: HotelButtonWidget(title: 'Steigenberger Makadi',),
             ),
           ],
         ));

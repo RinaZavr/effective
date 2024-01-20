@@ -1,4 +1,4 @@
-import 'package:effective/domain/models/hotel_model.dart';
+import 'package:hotel_app/domain/models/hotel_model.dart';
 import 'package:dio/dio.dart';
 
 class NetworkService {
