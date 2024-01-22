@@ -3,22 +3,25 @@ import 'package:hotel_app/utils/consts/bookingConsts/colors_consts.dart';
 import 'package:hotel_app/utils/consts/bookingConsts/textstyle_consts.dart';
 
 class BookingInputInfoTemplateWidget extends StatefulWidget {
-  final ValueChanged<String> updateInfo;
+  final ValueChanged<String?> updateInfo;
   final ValueChanged<bool> updateError;
   final bool hasError;
   final String title;
-  const BookingInputInfoTemplateWidget({super.key, required this.title, required this.updateInfo, required this.updateError, required this.hasError});
+  final String? value;
+  const BookingInputInfoTemplateWidget({super.key, required this.value, required this.title, required this.updateInfo, required this.updateError, required this.hasError});
 
   @override
   State<BookingInputInfoTemplateWidget> createState() => _BookingInputInfoTemplateWidgetState();
 }
 
 class _BookingInputInfoTemplateWidgetState extends State<BookingInputInfoTemplateWidget> {
-  String inputValue = '';
+  String? inputValue;
   late FocusNode focusNode;
 
   @override
   void initState() {
+    inputValue = widget.value;
+    print(inputValue);
     focusNode = FocusNode();
     focusNode.addListener(() {
       if (!focusNode.hasFocus) {
@@ -42,6 +45,7 @@ class _BookingInputInfoTemplateWidgetState extends State<BookingInputInfoTemplat
                   inputValue = value;
                 });
               },
+              initialValue: inputValue,
               decoration: InputDecoration(
                   border: InputBorder.none,
                   label: Text(

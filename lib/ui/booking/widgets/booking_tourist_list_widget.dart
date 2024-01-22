@@ -37,7 +37,7 @@ class _BookingTouristListWidgetState extends State<BookingTouristListWidget> {
   List<List<bool>> hasErrors = [
     List.filled(BookingListConsts.touristInfoTitleList.length, false)
   ];
-  List<List<String>> infoTourists = [
+  List<List<String?>> infoTourists = [
     List.filled(BookingListConsts.touristInfoTitleList.length, '')
   ];
   List<bool> isOpen = [false];
@@ -45,6 +45,7 @@ class _BookingTouristListWidgetState extends State<BookingTouristListWidget> {
 
   @override
   Widget build(BuildContext context) {
+    print(infoTourists);
     Size size = MediaQuery.of(context).size;
     return Column(
       children: [
@@ -93,6 +94,7 @@ class _BookingTouristListWidgetState extends State<BookingTouristListWidget> {
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return BookingInputInfoTemplateWidget(
+                        value: infoTourists[indexTourist][index],
                         hasError: hasErrors[indexTourist][index],
                         title: BookingListConsts.touristInfoTitleList[index],
                         updateError: (value) {
@@ -103,6 +105,7 @@ class _BookingTouristListWidgetState extends State<BookingTouristListWidget> {
                         updateInfo: (value) {
                           setState(() {
                             infoTourists[indexTourist][index] = value;
+                            print(infoTourists);
                           });
                         },
                       );

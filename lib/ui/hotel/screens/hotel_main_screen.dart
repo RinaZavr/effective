@@ -38,7 +38,7 @@ class _HotelMainScreenState extends State<HotelMainScreen> {
             HotelStringConsts.appBarTitle,
             style: HotelTextStyles.appBarTextStyle,
           ),
-          leading: Icon(Icons.abc, color: Colors.transparent,),
+          leading: const Icon(Icons.abc, color: Colors.transparent,),
         ),
         body: BlocProvider(
           create: (context) => hotelBloc,
