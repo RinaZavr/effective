@@ -1,9 +1,9 @@
-import 'package:hotel_app/consts/hotelConsts/colors_consts.dart';
+import 'package:hotel_app/utils/consts/hotelConsts/colors_consts.dart';
 import 'package:flutter/material.dart';
 
 class HotelImageCarouselWidget extends StatefulWidget {
   final Size size;
-  final List<String> images;
+  final List images;
   const HotelImageCarouselWidget(
       {super.key, required this.size, required this.images});
 
@@ -16,10 +16,11 @@ class _HotelImageCarouselWidgetState extends State<HotelImageCarouselWidget> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.all(16),
       child: SizedBox(
-        height: 260,
+        height: size.height * 0.3,
         child: Stack(
           children: [
             PageView.builder(
@@ -43,8 +44,8 @@ class _HotelImageCarouselWidgetState extends State<HotelImageCarouselWidget> {
               alignment: Alignment.bottomCenter,
               child: Container(
                 margin: const EdgeInsets.only(bottom: 8),
-                height: 17,
-                width: 75,
+                height: size.height * 0.02,
+                width: size.width * 0.18,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: HotelColors.imageCarouselBgColor,
@@ -56,8 +57,8 @@ class _HotelImageCarouselWidgetState extends State<HotelImageCarouselWidget> {
                     children: [
                       for (int index = 0; index < widget.images.length; index++)
                         Container(
-                          width: 7,
-                          height: 7,
+                          width: size.width * 0.017,
+                          height: size.width * 0.017,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: selectedImage == index

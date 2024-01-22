@@ -1,4 +1,4 @@
-import 'package:hotel_app/consts/bookingConsts/colors_consts.dart';
+import 'package:hotel_app/utils/consts/bookingConsts/colors_consts.dart';
 import 'package:flutter/material.dart';
 
 abstract class BookingTextStyles {

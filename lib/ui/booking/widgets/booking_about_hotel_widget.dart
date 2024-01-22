@@ -4,7 +4,12 @@ import 'package:hotel_app/ui/hotel/widgets/hotel_rating_widget.dart';
 import 'package:hotel_app/ui/hotel/widgets/hotel_title_widget.dart';
 
 class BookingAboutHotelWidget extends StatelessWidget {
-  const BookingAboutHotelWidget({super.key});
+  final String name;
+  final String adress;
+  final int rating;
+  final String ratingName;
+
+  const BookingAboutHotelWidget({super.key, required this.name, required this.adress, required this.rating, required this.ratingName});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +18,9 @@ class BookingAboutHotelWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HotelRatingWidget(rating: 5, ratingName: 'Превосходно'),
-          HotelTitleWidget(title: 'Steigenberger Makadi'),
-          HotelAddressWidget(title: 'Madinat Makadi, Safaga Road, Makadi Bay, Египет')
+          HotelRatingWidget(rating: rating, ratingName: ratingName),
+          HotelTitleWidget(title: name),
+          HotelAddressWidget(title: adress)
         ],
       ),
     );

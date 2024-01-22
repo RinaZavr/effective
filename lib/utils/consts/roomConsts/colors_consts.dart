@@ -12,4 +12,5 @@ abstract class RoomColors {
   static const selectButtonTitleColor = Colors.white;
   static const selectButtonBgColor = Color(0xFF0D72FF);
   static const moreButtonColor = Color(0xFF0D72FF);
+  static const moreButtonForegroundColor = Colors.white;
 }

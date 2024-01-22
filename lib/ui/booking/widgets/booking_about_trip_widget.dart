@@ -1,43 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_app/consts/bookingConsts/list_consts.dart';
-import 'package:hotel_app/consts/bookingConsts/textstyle_consts.dart';
+import 'package:hotel_app/utils/consts/bookingConsts/list_consts.dart';
+import 'package:hotel_app/utils/consts/bookingConsts/textstyle_consts.dart';
+import 'package:hotel_app/domain/models/booking_model.dart';
 
 class BookingAboutTripWidget extends StatelessWidget {
-  const BookingAboutTripWidget({super.key});
+  final Booking booking;
+  const BookingAboutTripWidget({super.key, required this.booking});
 
   @override
   Widget build(BuildContext context) {
     List<String> tripValues = [
-      'Санкт-Петербург',
-      'Египет, Хургада',
-      '19.09.2023 – 27.09.2023',
-      '7 ночей',
-      'Steigenberger Makadi',
-      'Стандартный с видом на бассейн или сад',
-      'Все включено'
+      booking.departure,
+      booking.arrivalCountry,
+      '${booking.tourDateStart} - ${booking.tourDateStop}',
+      '${booking.numberOfNights} ночей',
+      booking.hotelName,
+      booking.room,
+      booking.nutrition
     ];
     return Column(
       children: [
-        for(int index = 0; index < BookingListConsts.tripTitleList.length; index++)
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Row(
-            children: [
-              Expanded(
-                child: Text(
-                  BookingListConsts.tripTitleList[index],
-                  style: BookingTextStyles.tripTitleTextStyle,
+        for (int index = 0;
+            index < BookingListConsts.tripTitleList.length;
+            index++)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    BookingListConsts.tripTitleList[index],
+                    style: BookingTextStyles.tripTitleTextStyle,
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Text(
-                  tripValues[index],
-                  style: BookingTextStyles.tripValueTextStyle,
+                Expanded(
+                  child: Text(
+                    tripValues[index],
+                    style: BookingTextStyles.tripValueTextStyle,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
       ],
     );
   }

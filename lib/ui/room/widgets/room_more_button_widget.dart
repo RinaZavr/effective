@@ -1,5 +1,5 @@
-import 'package:hotel_app/consts/roomConsts/colors_consts.dart';
-import 'package:hotel_app/consts/roomConsts/textstyle_consts.dart';
+import 'package:hotel_app/utils/consts/roomConsts/colors_consts.dart';
+import 'package:hotel_app/utils/consts/roomConsts/textstyle_consts.dart';
 import 'package:flutter/material.dart';
 
 class RoomMoreButtonWidget extends StatelessWidget {
@@ -11,7 +11,7 @@ class RoomMoreButtonWidget extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        foregroundColor: Colors.white,
+        foregroundColor: RoomColors.moreButtonForegroundColor,
         elevation: 0,
       ),
       child: Row(

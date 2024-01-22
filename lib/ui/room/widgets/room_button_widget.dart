@@ -1,7 +1,7 @@
-import 'package:hotel_app/consts/roomConsts/colors_consts.dart';
-import 'package:hotel_app/consts/roomConsts/textstyle_consts.dart';
+import 'package:hotel_app/utils/consts/roomConsts/colors_consts.dart';
+import 'package:hotel_app/utils/consts/roomConsts/string_consts.dart';
+import 'package:hotel_app/utils/consts/roomConsts/textstyle_consts.dart';
 import 'package:flutter/material.dart';
-import 'package:hotel_app/ui/booking/screens/booking_main_screen.dart';
 
 class RoomButtonWidget extends StatelessWidget {
   final Size size;
@@ -19,13 +19,13 @@ class RoomButtonWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 15),
             backgroundColor: RoomColors.selectButtonBgColor),
         onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const BookingMainScreen()));
+          Navigator.pushNamed(
+            context,
+            '/booking',
+          );
         },
         child: const Text(
-          'Выбрать номер',
+          RoomStringConsts.buttonSelectTitle,
           style: RoomTextStyles.buttonTitleTextStyle,
         ),
       ),

@@ -1,5 +1,6 @@
-import 'package:hotel_app/consts/hotelConsts/image_consts.dart';
-import 'package:hotel_app/consts/hotelConsts/textstyle_consts.dart';
+import 'package:hotel_app/utils/consts/hotelConsts/image_consts.dart';
+import 'package:hotel_app/utils/consts/hotelConsts/string_consts.dart';
+import 'package:hotel_app/utils/consts/hotelConsts/textstyle_consts.dart';
 import 'package:hotel_app/ui/hotel/widgets/hotel_about_button_template_widget.dart';
 import 'package:hotel_app/ui/hotel/widgets/hotel_peculiarities_row_widget.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ class HotelAboutWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Column(
@@ -18,20 +20,18 @@ class HotelAboutWidget extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 16),
               child: Text(
-                'Об отеле',
+                HotelStringConsts.aboutTitle,
                 style: HotelTextStyles.aboutTitleTextStyle,
               ),
             ),
-            HotelPeculiaritiesRowWidget(textFirst: aboutHotel["peculiarities"][0], textSecond: aboutHotel["peculiarities"][1]),
-            const SizedBox(height: 8,),
-            HotelPeculiaritiesRowWidget(textFirst: aboutHotel["peculiarities"][2], textSecond: aboutHotel["peculiarities"][3]),
-            const SizedBox(height: 12,),
+            HotelPeculiaritiesRowWidget(peculiarities: aboutHotel["peculiarities"],),
+            SizedBox(height: size.height * 0.014,),
             Text(aboutHotel["description"], style: HotelTextStyles.aboutDescriptionTextStyle,),
-            const SizedBox(height: 16,),
-            const HotelAboutButtonTemplateWidget(image: HotelImageConsts.aboutButtonComfortImage, title: 'Комфорт'),
-            const HotelAboutButtonTemplateWidget(image: HotelImageConsts.aboutButtonIncludedImage, title: 'Что включено'),
-            const HotelAboutButtonTemplateWidget(image: HotelImageConsts.aboutButtonNotIncludedImage, title: 'Что не включено'),
-            const SizedBox(height: 16,),
+            SizedBox(height: size.height * 0.018,),
+            const HotelAboutButtonTemplateWidget(image: HotelImageConsts.aboutButtonComfortImage, title: HotelStringConsts.aboutButtonComfortTitle),
+            const HotelAboutButtonTemplateWidget(image: HotelImageConsts.aboutButtonIncludedImage, title: HotelStringConsts.aboutButtonIncludedTitle),
+            const HotelAboutButtonTemplateWidget(image: HotelImageConsts.aboutButtonNotIncludedImage, title: HotelStringConsts.aboutButtonNotIncludedTitle),
+            SizedBox(height: size.height * 0.018,),
           ],
         ),
       );

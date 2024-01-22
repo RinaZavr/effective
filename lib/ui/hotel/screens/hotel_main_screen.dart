@@ -1,4 +1,7 @@
-import 'package:hotel_app/consts/hotelConsts/textstyle_consts.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hotel_app/utils/consts/hotelConsts/string_consts.dart';
+import 'package:hotel_app/utils/consts/hotelConsts/textstyle_consts.dart';
+import 'package:hotel_app/ui/hotel/bloc/hotel_bloc.dart';
 import 'package:hotel_app/ui/hotel/widgets/hotel_about_widget.dart';
 import 'package:hotel_app/ui/hotel/widgets/hotel_button_widget.dart';
 import 'package:hotel_app/ui/hotel/widgets/hotel_address_widget.dart';
@@ -16,12 +19,14 @@ class HotelMainScreen extends StatefulWidget {
 }
 
 class _HotelMainScreenState extends State<HotelMainScreen> {
-  List<String> images = [
-    'https://www.atorus.ru/sites/default/files/upload/image/News/56149/Club_Priv%C3%A9_by_Belek_Club_House.jpg',
-    'https://www.atorus.ru/sites/default/files/upload/image/News/56149/Club_Priv%C3%A9_by_Belek_Club_House.jpg',
-    'https://www.atorus.ru/sites/default/files/upload/image/News/56149/Club_Priv%C3%A9_by_Belek_Club_House.jpg',
-  ];
+  late HotelBloc hotelBloc;
 
+  @override
+  void initState() {
+    hotelBloc = HotelBloc();
+    hotelBloc.add(GetHotelEvent());
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -30,47 +35,64 @@ class _HotelMainScreenState extends State<HotelMainScreen> {
         appBar: AppBar(
           centerTitle: true,
           title: const Text(
-            'Отель',
+            HotelStringConsts.appBarTitle,
             style: HotelTextStyles.appBarTextStyle,
           ),
+          leading: Icon(Icons.abc, color: Colors.transparent,),
         ),
-        body: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: HotelImageCarouselWidget(size: size, images: images),
-            ),
-            const SliverToBoxAdapter(
-              child: HotelRatingWidget(rating: 5, ratingName: 'Превосходно'),
-            ),
-            const SliverToBoxAdapter(
-              child: HotelTitleWidget(title: 'Steigenberger Makadi'),
-            ),
-            const SliverToBoxAdapter(
-              child: HotelAddressWidget(
-                  title: 'Madinat Makadi, Safaga Road, Makadi Bay, Египет'),
-            ),
-            const SliverToBoxAdapter(
-              child:
-                  HotelPriceWidget(price: 134268, priceForIt: 'За тур с перелётом'),
-            ),
-            const SliverToBoxAdapter(
-              child: HotelAboutWidget(
-                aboutHotel: {
-                  "description":
-                      "Отель VIP-класса с собственными гольф полями. Высокий уровнь сервиса. Рекомендуем для респектабельного отдыха. Отель принимает гостей от 18 лет!",
-                  "peculiarities": [
-                    "Бесплатный Wifi на всей территории отеля",
-                    "1 км до пляжа",
-                    "Бесплатный фитнес-клуб",
-                    "20 км до аэропорта"
-                  ]
-                },
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: HotelButtonWidget(title: 'Steigenberger Makadi',),
-            ),
-          ],
+        body: BlocProvider(
+          create: (context) => hotelBloc,
+          child: BlocBuilder<HotelBloc, HotelState>(
+            builder: (context, state) {
+              if (state is HotelLoadingState) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if (state is HotelErrorState) {
+                return Text(state.error);
+              }
+              if (state is HotelLoadedState) {
+                return CustomScrollView(
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: HotelImageCarouselWidget(
+                          size: size, images: state.hotel.imageUrls),
+                    ),
+                    SliverToBoxAdapter(
+                      child: HotelRatingWidget(
+                          rating: state.hotel.rating,
+                          ratingName: state.hotel.ratingName),
+                    ),
+                    SliverToBoxAdapter(
+                      child: HotelTitleWidget(title: state.hotel.name),
+                    ),
+                    SliverToBoxAdapter(
+                      child: HotelAddressWidget(title: state.hotel.adress),
+                    ),
+                    SliverToBoxAdapter(
+                      child: HotelPriceWidget(
+                          price: state.hotel.minimalPrice,
+                          priceForIt: state.hotel.priceForIt),
+                    ),
+                    SliverToBoxAdapter(
+                      child: HotelAboutWidget(
+                        aboutHotel: state.hotel.aboutTheHotel,
+                      ),
+                    ),
+                    SliverToBoxAdapter(
+                      child: HotelButtonWidget(
+                        title: state.hotel.name,
+                      ),
+                    ),
+                  ],
+                );
+              }
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            },
+          ),
         ));
   }
 }

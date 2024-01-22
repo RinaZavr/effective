@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_app/consts/bookingConsts/list_consts.dart';
-import 'package:hotel_app/consts/bookingConsts/textstyle_consts.dart';
+import 'package:hotel_app/utils/consts/bookingConsts/colors_consts.dart';
+import 'package:hotel_app/utils/consts/bookingConsts/list_consts.dart';
+import 'package:hotel_app/utils/consts/bookingConsts/textstyle_consts.dart';
 
 class BookingTouristInfoWidget extends StatefulWidget {
   final ValueChanged<List<String>> updateInfoTourist;
@@ -68,8 +69,8 @@ class _BookingTouristInfoWidgetState extends State<BookingTouristInfoWidget> {
                   style: BookingTextStyles.inputPhoneTextStyle,
                 ),
                 fillColor: hasErrors[index]
-                    ? const Color(0x26EB5757)
-                    : Colors.white,
+                    ? BookingColors.inputErrorColor
+                    : BookingColors.inputNotErrorColor,
                 filled: true),
           ),
       ],

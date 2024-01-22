@@ -1,4 +1,4 @@
-import 'package:hotel_app/consts/roomConsts/colors_consts.dart';
+import 'package:hotel_app/utils/consts/roomConsts/colors_consts.dart';
 import 'package:flutter/material.dart';
 
 abstract class RoomTextStyles {

@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_app/consts/bookingConsts/list_consts.dart';
-import 'package:hotel_app/consts/bookingConsts/textstyle_consts.dart';
+import 'package:hotel_app/utils/consts/bookingConsts/list_consts.dart';
+import 'package:hotel_app/utils/consts/bookingConsts/textstyle_consts.dart';
 
 class BookingPriceWidget extends StatelessWidget {
-  const BookingPriceWidget({super.key});
+  final int tourPrice;
+  final int fuelCharge;
+  final int serviceCharge;
+  const BookingPriceWidget({super.key, required this.tourPrice, required this.fuelCharge, required this.serviceCharge});
 
   @override
   Widget build(BuildContext context) {
     List<int> priceValues = [
-      289400, 9300, 2150, 289400+9300+2150
+      tourPrice, fuelCharge, serviceCharge, tourPrice+fuelCharge+serviceCharge
     ];
     return Column(
       children: [

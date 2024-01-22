@@ -2,9 +2,11 @@ import 'package:hotel_app/domain/services/network_service.dart';
 import 'package:hotel_app/ui/hotel/screens/hotel_main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hotel_app/utils/routs.dart';
 
 void main() {
-  GetIt.instance.registerSingleton<NetworkService>(NetworkService()); // использовать один экземпяр класса везде
+  GetIt.instance.registerSingleton<NetworkService>(
+      NetworkService());
   runApp(const MyApp());
 }
 
@@ -13,13 +15,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const HotelMainScreen(),
+      onGenerateRoute: RouteGenerator.generateRoute,
+      home: HotelMainScreen(),
     );
   }
 }

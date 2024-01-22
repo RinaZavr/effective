@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_app/consts/bookingConsts/textstyle_consts.dart';
+import 'package:hotel_app/utils/consts/bookingConsts/colors_consts.dart';
+import 'package:hotel_app/utils/consts/bookingConsts/textstyle_consts.dart';
 
 class BookingInputInfoTemplateWidget extends StatefulWidget {
   final ValueChanged<String> updateInfo;
@@ -32,24 +33,27 @@ class _BookingInputInfoTemplateWidgetState extends State<BookingInputInfoTemplat
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-            focusNode: focusNode,
-            onChanged: (value) {
-              setState(() {
-                inputValue = value;
-              });
-            },
-            decoration: InputDecoration(
-                border: InputBorder.none,
-                label: Text(
-                  widget.title,
-                  style: BookingTextStyles.inputPhoneTextStyle,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: TextFormField(
+              focusNode: focusNode,
+              onChanged: (value) {
+                setState(() {
+                  inputValue = value;
+                });
+              },
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  label: Text(
+                    widget.title,
+                    style: BookingTextStyles.inputPhoneTextStyle,
+                  ),
+                  fillColor: widget.hasError
+                      ? BookingColors.inputErrorColor
+                      : BookingColors.inputNotErrorColor,
+                  filled: true,
                 ),
-                fillColor: widget.hasError
-                    ? const Color(0x26EB5757)
-                    : Colors.white,
-                filled: true,
-              ),
-          );
+            ),
+    );
   }
 }

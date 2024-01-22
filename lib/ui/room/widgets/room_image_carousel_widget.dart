@@ -1,14 +1,15 @@
-import 'package:hotel_app/consts/roomConsts/colors_consts.dart';
+import 'package:hotel_app/utils/consts/roomConsts/colors_consts.dart';
 import 'package:flutter/material.dart';
 
 class RoomImageCarouselWidget extends StatefulWidget {
   final Size size;
-  final List<String> images;
+  final List images;
   const RoomImageCarouselWidget(
       {super.key, required this.size, required this.images});
 
   @override
-  State<RoomImageCarouselWidget> createState() => _RoomImageCarouselWidgetState();
+  State<RoomImageCarouselWidget> createState() =>
+      _RoomImageCarouselWidgetState();
 }
 
 class _RoomImageCarouselWidgetState extends State<RoomImageCarouselWidget> {
@@ -16,10 +17,11 @@ class _RoomImageCarouselWidgetState extends State<RoomImageCarouselWidget> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.all(16),
       child: SizedBox(
-        height: 260,
+        height: size.height * 0.3,
         child: Stack(
           children: [
             PageView.builder(
@@ -43,8 +45,8 @@ class _RoomImageCarouselWidgetState extends State<RoomImageCarouselWidget> {
               alignment: Alignment.bottomCenter,
               child: Container(
                 margin: const EdgeInsets.only(bottom: 8),
-                height: 17,
-                width: 75,
+                height: size.height * 0.02,
+                width: size.width * 0.18,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: RoomColors.imageCarouselBgColor,
@@ -56,8 +58,8 @@ class _RoomImageCarouselWidgetState extends State<RoomImageCarouselWidget> {
                     children: [
                       for (int index = 0; index < widget.images.length; index++)
                         Container(
-                          width: 7,
-                          height: 7,
+                          width: size.width * 0.017,
+                          height: size.width * 0.017,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: selectedImage == index

@@ -15,4 +15,8 @@ abstract class BookingColors {
   static const buyButtonBgColor = Color(0xFF0D72FF);
   static const priceTitleColor = Color(0xFF828796);
   static const priceValueColor = Colors.black;
+  static const inputErrorColor = Color(0x26EB5757);
+  static const inputNotErrorColor = Colors.white;
+  static const touristButtonForegroundColor = Colors.white;
+  static const touristButtonAddForegroundColor = Colors.white;
 }
